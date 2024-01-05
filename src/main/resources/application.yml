@@ -1,0 +1,44 @@
+server:
+  port: 8080
+#  ssl:
+#    protocol: TLS
+#    key-store: classpath:server.keystore
+#    key-store-password: 12345678
+#    key-store-type: JKS
+# spring config
+
+spring:
+  application:
+    name: 'book-server'
+  profiles:
+    active: prod
+  aop:
+    auto: true
+  jackson:
+    time-zone: GMT+8
+  main:
+    allow-bean-definition-overriding: true
+  # ????
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 1MB
+mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*.xml
+  #如果有单独的mybatis配置，就可以将路径配置在ConfigLocation中
+# 日志配置
+logging:
+  level:
+    com.hgsoft.prepaid: info
+    org.springframework: warn
+    org.spring.springboot.dao: info
+    org.apache.kafka: info
+    com.xxl: info
+    io.lettuce: info
+    io.netty: info
+    org.xnio: info
+    com.zaxxer.hikari: info
+    io.undertow: info
+    org.apache.http: info

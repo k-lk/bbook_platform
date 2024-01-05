@@ -1,0 +1,71 @@
+server:
+  port: 8080
+#  ssl:
+#    protocol: TLS
+#    key-store: classpath:server.keystore
+#    key-store-password: 12345678
+#    key-store-type: JKS
+# spring config
+http-port: 8080 # http重定向https配置
+spring:
+  profiles:
+    active: dev # 激活指定的环境
+  aop:
+    auto: true
+  jackson:
+    time-zone: GMT+8
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 1MB
+  # datasource config
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://139.196.89.94:5433/db8ec2510b2fc54e89b2b35ce035bdf8fbbook_platform
+    username: llk
+    password: D6KzX43V6R4B80Q
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      auto-commit: true
+      idle-timeout: 180000
+      pool-name: VipHikariCP
+      max-lifetime: 900000
+      connection-timeout: 30000
+      connection-test-query: select 1
+mybatis-plus:
+  #  configuration:
+  #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*.xml
+  #如果有单独的mybatis配置，就可以将路径配置在ConfigLocation中
+  logEnable: true
+
+# 日志配置
+logging:
+  level:
+    com.hgsoft.prepaid: info
+    org.springframework: warn
+    org.spring.springboot.dao: info
+    org.apache.kafka: info
+    com.xxl: info
+    io.lettuce: info
+    io.netty: info
+    org.xnio: info
+    com.zaxxer.hikari: info
+    io.undertow: info
+    org.apache.http: info
+# 微信相关配置
+wx:
+  # 微信小程序相关配置
+  mnp:
+    appid: wxe021421e7da7123b
+    secret: 426d4f12160772ee4c6f1626627274ac
+    # 微信支付相关配置
+pagehelper:
+  helperDialect: postgresql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
