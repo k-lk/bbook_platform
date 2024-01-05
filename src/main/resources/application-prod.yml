@@ -8,8 +8,6 @@ server:
 # spring config
 http-port: 8080 # http重定向https配置
 spring:
-  profiles:
-    active: dev # 激活指定的环境
   aop:
     auto: true
   jackson:
@@ -37,11 +35,14 @@ spring:
       connection-timeout: 30000
       connection-test-query: select 1
 mybatis-plus:
+  configuration:
+    #关闭日志打印
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
   #  configuration:
   #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:mapper/*.xml
-  #如果有单独的mybatis配置，就可以将路径配置在ConfigLocation中
-  logEnable: true
+  # 为true时，会将执行的sql打印出来
+  logEnable: false
 
 # 日志配置
 logging:
