@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class TokenCache {
     private Cache<String, String> cache = CacheBuilder.newBuilder()
-            .expireAfterWrite(30, TimeUnit.MINUTES) // 设置缓存过期时间为30分钟
+            .expireAfterWrite(30, TimeUnit.DAYS) // 设置缓存过期时间为30分钟
             .build();
 
     /**
